@@ -18,28 +18,28 @@ class VAE_CNN_Deep(nn.Module):
 
         # Encoder: deeper stack
         self.enc = nn.Sequential(
-            nn.Conv2d(1, 32, 3, stride=1, padding=1),   # 32x28x28
+            nn.Conv2d(1, 32, 3, stride=1, padding=1),   # 32x32x32
             nn.ReLU(),
-            nn.Conv2d(32, 64, 4, stride=2, padding=1),  # 64x14x14
+            nn.Conv2d(32, 64, 4, stride=2, padding=1),  # 64x16x16
             nn.ReLU(),
-            nn.Conv2d(64, 128, 4, stride=2, padding=1), # 128x7x7
+            nn.Conv2d(64, 128, 4, stride=2, padding=1), # 128x8x8
             nn.ReLU(),
-            nn.Conv2d(128, 128, 3, stride=1, padding=1), # 128x7x7
+            nn.Conv2d(128, 128, 3, stride=1, padding=1), # 128x8x8
             nn.ReLU()
         )
 
-        self.fc_mu = nn.Linear(128 * 7 * 7, latent_dim)
-        self.fc_logvar = nn.Linear(128 * 7 * 7, latent_dim)
+        self.fc_mu = nn.Linear(128 * 8 * 8, latent_dim)
+        self.fc_logvar = nn.Linear(128 * 8 * 8, latent_dim)
 
         # Decoder
-        self.fc_dec = nn.Linear(latent_dim, 128 * 7 * 7)
+        self.fc_dec = nn.Linear(latent_dim, 128 * 8 * 8)
 
         self.dec = nn.Sequential(
-            nn.ConvTranspose2d(128, 128, 3, stride=1, padding=1),   # 128x7x7
+            nn.ConvTranspose2d(128, 128, 3, stride=1, padding=1),   # 128x8x8
             nn.ReLU(),
-            nn.ConvTranspose2d(128, 64, 4, stride=2, padding=1),    # 64x14x14
+            nn.ConvTranspose2d(128, 64, 4, stride=2, padding=1),    # 64x16x16
             nn.ReLU(),
-            nn.ConvTranspose2d(64, 32, 4, stride=2, padding=1),     # 32x28x28
+            nn.ConvTranspose2d(64, 32, 4, stride=2, padding=1),     # 32x32x32
             nn.ReLU(),
             nn.Conv2d(32, 1, kernel_size=3, stride=1, padding=1),
             nn.Sigmoid()
@@ -52,7 +52,7 @@ class VAE_CNN_Deep(nn.Module):
 
     def decode(self, z):
         h = self.fc_dec(z)
-        h = h.view(z.size(0), 128, 7, 7)
+        h = h.view(z.size(0), 128, 8, 8)
         return self.dec(h)
 
     def forward(self, x):
@@ -66,9 +66,9 @@ def main():
     print(f"Using device: {device}")
 
     models_dir = Path(__file__).parent / "models"
-    model = VAE_CNN_Deep(latent_dim=64).to(device)
+    model = VAE_CNN_Deep(latent_dim=32).to(device)
 
-    model_path = models_dir / "vae_cnn_deep.pth"
+    model_path = models_dir / "vae_cnn_deep_50epochs.pth"
     if model_path.exists():
         model.load_state_dict(torch.load(model_path, map_location=device, weights_only=True))
         print("Loaded VAE_CNN_Deep")
@@ -119,7 +119,7 @@ def main():
     plt.tight_layout()
     outputs_dir = Path(__file__).parent / "outputs"
     outputs_dir.mkdir(exist_ok=True)
-    save_path = outputs_dir / "vae_cnn_deep_reconstructions.png"
+    save_path = outputs_dir / "quest_latent256_lr0.0001.png"
     plt.savefig(save_path)
     print(f"Saved reconstructions to {save_path}")
     plt.show()
