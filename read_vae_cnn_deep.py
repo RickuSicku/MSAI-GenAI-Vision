@@ -78,7 +78,10 @@ def main():
 
     model.eval()
 
-    transform = transforms.Compose([transforms.ToTensor()])
+    transform = transforms.Compose([
+        transforms.Pad(2),
+        transforms.ToTensor()
+    ])
     dataset = torchvision.datasets.FashionMNIST(root='./data', train=False, download=True, transform=transform)
     
     fashion_classes = (
