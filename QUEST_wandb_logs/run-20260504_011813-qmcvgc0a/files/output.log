@@ -1,0 +1,20 @@
+Epoch 1/15 | Loss: 1449.79 | Recon: 1141.05 | KL: 205.82
+Epoch 2/15 | Loss: 1215.13 | Recon: 893.37 | KL: 214.51
+Epoch 3/15 | Loss: 1064.80 | Recon: 774.09 | KL: 193.81
+Epoch 4/15 | Loss: 996.42 | Recon: 711.96 | KL: 189.64
+Epoch 5/15 | Loss: 962.06 | Recon: 678.46 | KL: 189.07
+Epoch 6/15 | Loss: 939.44 | Recon: 654.38 | KL: 190.04
+Traceback (most recent call last):
+  File "/gpfs/home/cqp0132/vae_sweep_project/vae_env/lib/python3.10/site-packages/wandb/agents/pyagent.py", line 304, in _run_job
+    self._function()
+  File "/gpfs/home/cqp0132/vae_sweep_project/parameter_search.py", line 149, in train_sweep
+    train(
+  File "/gpfs/home/cqp0132/vae_sweep_project/parameter_search.py", line 120, in train
+    loss.backward()
+  File "/gpfs/home/cqp0132/vae_sweep_project/vae_env/lib/python3.10/site-packages/torch/_tensor.py", line 581, in backward
+    torch.autograd.backward(
+  File "/gpfs/home/cqp0132/vae_sweep_project/vae_env/lib/python3.10/site-packages/torch/autograd/__init__.py", line 347, in backward
+    _engine_run_backward(
+  File "/gpfs/home/cqp0132/vae_sweep_project/vae_env/lib/python3.10/site-packages/torch/autograd/graph.py", line 825, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+Exception

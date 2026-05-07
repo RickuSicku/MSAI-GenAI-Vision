@@ -1,0 +1,15 @@
+Epoch 1/15 | Loss: 1173.26 | Recon: 957.85 | KL: 430.82
+Epoch 2/15 | Loss: 744.44 | Recon: 536.92 | KL: 415.02
+Epoch 3/15 | Loss: 698.25 | Recon: 486.30 | KL: 423.91
+Epoch 4/15 | Loss: 675.04 | Recon: 460.05 | KL: 429.99
+Epoch 5/15 | Loss: 659.14 | Recon: 443.38 | KL: 431.52
+Epoch 6/15 | Loss: 647.73 | Recon: 430.80 | KL: 433.86
+Epoch 7/15 | Loss: 638.63 | Recon: 421.68 | KL: 433.90
+Epoch 8/15 | Loss: 631.70 | Recon: 414.48 | KL: 434.44
+Epoch 9/15 | Loss: 625.97 | Recon: 408.83 | KL: 434.27
+Epoch 10/15 | Loss: 620.84 | Recon: 403.54 | KL: 434.60
+Epoch 11/15 | Loss: 617.09 | Recon: 399.66 | KL: 434.85
+Epoch 12/15 | Loss: 612.50 | Recon: 395.42 | KL: 434.17
+Epoch 13/15 | Loss: 609.38 | Recon: 392.30 | KL: 434.16
+Epoch 14/15 | Loss: 606.01 | Recon: 389.30 | KL: 433.43
+Epoch 15/15 | Loss: 603.59 | Recon: 387.04 | KL: 433.09
