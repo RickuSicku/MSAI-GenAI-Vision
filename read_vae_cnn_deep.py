@@ -65,10 +65,10 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
 
-    models_dir = Path(__file__).parent / "models"
-    model = VAE_CNN_Deep(latent_dim=32).to(device)
+    models_dir = Path(__file__).parent / "models" / "QUEST_models"
+    model = VAE_CNN_Deep(latent_dim=256).to(device)
 
-    model_path = models_dir / "vae_cnn_deep_50epochs.pth"
+    model_path = models_dir / "vae_cnn_deep_latent256_lr0.0001.pth"
     if model_path.exists():
         model.load_state_dict(torch.load(model_path, map_location=device, weights_only=True))
         print("Loaded VAE_CNN_Deep")
